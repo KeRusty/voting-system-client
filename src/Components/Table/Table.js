@@ -65,7 +65,6 @@ function VoteTable() {
   ];
 
   const onVoteFor = (id) => {
-    console.log(id, "FOR FIRED");
     setLoading(true);
     axios
       .patch(`http://localhost:3000/api/incrementVote/${id}`)
@@ -83,7 +82,6 @@ function VoteTable() {
   };
 
   const onVoteAgainst = (id) => {
-    console.log(id, "AGAINST FIRED");
     setLoading(true);
     axios
       .patch(`http://localhost:3000/api/decrementVote/${id}`)
