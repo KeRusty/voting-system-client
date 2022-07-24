@@ -53,38 +53,38 @@ function VoteTable() {
       title: "Action",
       render: (text, record) => (
         <Space size="middle">
-          <a
+          <p
             className="voteForButton"
             onClick={() => {
               onVoteFor(record._id);
             }}
           >
             Vote For
-          </a>
-          <a
+          </p>
+          <p
             className="voteAgainstButton"
             onClick={() => {
               onVoteAgainst(record._id, record.voteCount);
             }}
           >
             Vote Against
-          </a>
-          <a
+          </p>
+          <p
             className="deleteButton"
             onClick={() => {
               deleteVote(record._id);
             }}
           >
             Delete Vote
-          </a>
+          </p>
         </Space>
       ),
     },
   ];
 
-  const onVoteFor = (id) => {
+  const onVoteFor = async (id) => {
     setLoading(true);
-    axios
+    await axios
       .patch(`http://localhost:3000/api/incrementVote/${id}`)
       .then(function (response) {
         if (!voteFor) {
@@ -99,12 +99,12 @@ function VoteTable() {
       });
   };
 
-  const onVoteAgainst = (id, voteCount) => {
+  const onVoteAgainst = async (id, voteCount) => {
     if (voteCount === 0) {
       error();
     } else {
       setLoading(true);
-      axios
+      await axios
         .patch(`http://localhost:3000/api/decrementVote/${id}`)
         .then(function (response) {
           if (!voteAgainst) {
@@ -121,9 +121,9 @@ function VoteTable() {
   };
 
   // DOUBLE CHECK
-  const deleteVote = (id) => {
+  const deleteVote = async (id) => {
     setLoading(true);
-    axios
+    await axios
       .delete(`http://localhost:3000/api/deleteVote/${id}`)
       .then(function (response) {
         if (!deleted) {
@@ -138,9 +138,9 @@ function VoteTable() {
       });
   };
 
-  const getAllVotes = () => {
+  const getAllVotes = async () => {
     setLoading(true);
-    axios
+    await axios
       .get("http://localhost:3000/api/getAllVotes")
       .then(function (response) {
         setVoteData(response.data);

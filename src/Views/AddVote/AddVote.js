@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -11,15 +11,12 @@ import "./AddVote.scss";
 
 function AddVote() {
   const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
 
   const handleOnSubmit = async (values) => {
-    setLoading(true);
-    axios
+    await axios
       .post(`http://localhost:3000/api/addVote`, values)
       .then(function (response) {
         navigate("/");
-        setLoading(false);
       })
       .catch(function (error) {
         console.log(error);

@@ -9,3 +9,15 @@
 .deleteButton {
   color: gray;
 }
+
+.deleteButton:hover {
+  cursor: pointer;
+}
+
+.voteForButton:hover {
+  cursor: pointer;
+}
+
+.voteAgainstButton:hover {
+  cursor: pointer;
+}
