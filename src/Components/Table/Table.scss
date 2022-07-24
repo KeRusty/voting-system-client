@@ -1,11 +1,23 @@
 .voteForButton {
-  color: aqua;
+  color: #52b528;
 }
 
 .voteAgainstButton {
-  color: palevioletred;
+  color: #f50;
 }
 
 .deleteButton {
   color: gray;
+}
+
+.deleteButton:hover {
+  cursor: pointer;
+}
+
+.voteForButton:hover {
+  cursor: pointer;
+}
+
+.voteAgainstButton:hover {
+  cursor: pointer;
 }

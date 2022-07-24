@@ -1,17 +1,19 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { PageHeader } from "antd";
 
 // Styles
 import "./NavBar.scss";
 
-const goBack = () => {};
-
-const NavBar = () => (
-  <PageHeader
-    className="site-page-header"
-    onBack={() => window.history.back()}
-    title="Voting System"
-  />
-);
+function NavBar({ back }) {
+  const navigate = useNavigate();
+  return (
+    <PageHeader
+      className="site-page-header"
+      onBack={back ? () => navigate("/") : false}
+      title="Voting System"
+    />
+  );
+}
 
 export default NavBar;
